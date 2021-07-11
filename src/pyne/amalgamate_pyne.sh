@@ -11,6 +11,7 @@ set -e
 cd $1/pyne/src
 python atomicgen.py
 cd ..
+sed -i "s/with open(filename, 'rt', encoding='utf-8') as f:/with open(filename, 'rt') as f:/g" amalgamate.py
 python amalgamate.py -f license.txt src/utils.* src/extra_types.h src/h5wrap.h \
     src/state_map.cpp src/nucname.* src/rxname.* src/particle.* src/data.* \
     src/json-forwards.h src/json.h src/jsoncpp.cpp src/jsoncustomwriter.* \
